@@ -4,38 +4,40 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class Client with ChangeNotifier{
-
-  var fName;
-  var lName;
-  var phNum;
+class ClientForm with ChangeNotifier {
+  // var fName;
+  // var lName;
+  // var phNum;
   var idNum;
   var howMetCo;
   var addr;
   var area;
   var relate;
 
+  Future<void> sendClientInfo(String fName,String lName,String phNum) async {
+    final url = 'http://91.98.11.166:4321/api/new_moshtarakBase/postmoshtarak';
 
-  Future<void> sendClientInfo(fName, lName, phNum, idNum, howMetCo, addr, area, relate) async{
+       try {
+        var response = await http.post(Uri.parse(url),
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+            },
+            body: json.encode({
+              'new_name': fName,
+              'new_familyname': lName,
+              'new_mobile': phNum
+              // 'meli_coade':'idNum'
+            }));
 
-    final url = 'http://192.168.1.55:5555/Test/main.aspx#252904263';
+        print('${response.statusCode}=> STATUS CODE');
 
-
-    try{
-      var response = http.post(Uri.parse(url), body: json.encode({
-
-        'new_name': fName,
-        'new_lastname': lName,
-        // '': phNum
-
-      }));
-    }
-    on HttpException catch(err){
-
-      print(err.message);
-    }
-
-
+        print('Do not have Response');
+      }
+      on HttpException catch (err) {
+        print(err.message);
+      }
+     notifyListeners();
 
   }
 
