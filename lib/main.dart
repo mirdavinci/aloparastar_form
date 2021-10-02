@@ -2,7 +2,9 @@ import 'package:crm_alo_parastar/providers/authentication.dart';
 import 'package:crm_alo_parastar/providers/client.dart';
 import 'package:crm_alo_parastar/views/crm_form.dart';
 import 'package:crm_alo_parastar/views/main_page.dart';
+import 'package:crm_alo_parastar/views/new_client.dart';
 import 'package:crm_alo_parastar/views/signup.dart';
+import 'package:crm_alo_parastar/widgets/drop_down_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
         theme: theme.copyWith(
-          colorScheme: theme.colorScheme.copyWith(primary:Colors.blue.withOpacity(0.6), secondary: Colors.white54.withOpacity(0.6)),
+          colorScheme: theme.colorScheme.copyWith(primary:Colors.lightGreen.shade400, secondary:  Colors.green.shade800),
 
           // pageTransitionsTheme: PageTransitionsTheme(builders: {
           //   ///builders => ye map migire. ye map az system amelaaye mokhtalef
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
 
 
         ),
-            home:MainPage() ,
+            home:NewClient() ,
        ),
     );
   }

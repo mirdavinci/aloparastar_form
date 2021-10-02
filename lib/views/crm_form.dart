@@ -194,36 +194,3 @@ class _CrmFormState extends State<CrmForm> {
   }
 }
 
-Widget customizedTextForm(
-    TextEditingController textEditingController,
-    var hintInput,
-    TextInputType inputType,
-    TextInputAction inputAction,
-    context) {
-  ///onChange => kare hamoon controller ro mikone.
-  ///controller => karesh ine k otomaat migire user input ro va niaz b onChange nis
-
-  return Container(
-    height: 50,
-    width: 250,
-    margin: EdgeInsets.only(left: 75),
-    child: TextFormField(
-      validator: (value) {
-        if (value.isEmpty) {
-          return 'لطفا همه ی فیلد ها را کامل کنید ';
-        }
-      },
-      onSaved: (value) {
-        textEditingController.text = value;
-      },
-      textAlign: TextAlign.right,
-      decoration: InputDecoration(
-        enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xffA8C0FE))),
-        border: UnderlineInputBorder(
-            borderSide: BorderSide(color: const Color(0xffA8C0FE))),
-        hintText: hintInput,
-      ),
-    ),
-  );
-}
